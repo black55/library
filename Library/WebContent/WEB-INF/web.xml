@@ -11,4 +11,13 @@
   	<res-type>javax.sql.DataSource</res-type>
   	<res-auth>Container</res-auth>
   </resource-ref>
+  
+   <servlet>
+  	<servlet-name>loginCheck</servlet-name>
+  	<servlet-class>userManagement.login</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>loginCheck</servlet-name>
+  	<url-pattern>/loginCheck</url-pattern>
+  </servlet-mapping>
 </web-app>

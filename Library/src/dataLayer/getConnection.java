@@ -4,7 +4,7 @@ import java.sql.*;
 import javax.naming.*;
 import javax.sql.DataSource;
 public class getConnection {
-	public static Connection get()
+	public static Connection get() throws SQLException
 	{
 		Connection conn = null;
 		try
@@ -15,7 +15,7 @@ public class getConnection {
 				throw new SQLException("Data pool creation failed ...");
 			conn = pool.getConnection();
 		}
-		catch(SQLException | NamingException e)
+		catch(NamingException e)
 		{
 		}
 		return conn;
