@@ -14,9 +14,11 @@ public class getConnection {
 			if(pool == null)
 				throw new SQLException("Data pool creation failed ...");
 			conn = pool.getConnection();
+			System.out.println(conn);
 		}
-		catch(NamingException e)
+		catch(SQLException|NamingException e)
 		{
+			
 		}
 		return conn;
 	}
