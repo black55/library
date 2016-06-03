@@ -25,7 +25,6 @@ public class login extends HttpServlet {
 			String username = req.getParameter("username");
 			String password = req.getParameter("password");
 			Connection conn = dataLayer.getConnection.get();
-			System.out.println("username : " + username + "\n password : " + password);
 			conn.close();
 		}
 		catch(SQLException e)
