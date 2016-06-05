@@ -22,21 +22,33 @@ public class login extends HttpServlet {
 	protected void doGetANDdoPost(HttpServletRequest req, HttpServletResponse res)
 	{
 		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet resultSet = null;
 		try
 		{
 			String username = req.getParameter("username");
 			String password = req.getParameter("password");
 			conn = dataLayer.getConnection.get();
-			
-			conn.close();
+			stmt = conn.prepareStatement("select username from user where username = ? and password = md5(?)");
+			stmt.setString(1,username);
+			stmt.setString(2, password);
+			resultSet = stmt.executeQuery();
+			if(resultSet.next())
+			{
+				System.out.println("Success");
+			}
+			else
+			{
+				System.out.println("failed");	
+			}
 		}
-		catch(SQLException e)
+		catch( Exception e)
 		{
 			System.out.println(e);
 		}
 		finally
 		{
-			exceptionHandler.sqlSafeClose.closeConnection(conn);
+			exceptionHandler.sqlSafeClose.closeAll(conn, stmt, resultSet);
 		}
 	}
 	
