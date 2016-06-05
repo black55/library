@@ -6,6 +6,7 @@ import javax.servlet.http.*;
 import java.sql.*;
 
 public class login extends HttpServlet {
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException
 	{
@@ -20,16 +21,22 @@ public class login extends HttpServlet {
 	
 	protected void doGetANDdoPost(HttpServletRequest req, HttpServletResponse res)
 	{
+		Connection conn = null;
 		try
 		{
 			String username = req.getParameter("username");
 			String password = req.getParameter("password");
-			Connection conn = dataLayer.getConnection.get();
+			conn = dataLayer.getConnection.get();
+			
 			conn.close();
 		}
 		catch(SQLException e)
 		{
 			System.out.println(e);
+		}
+		finally
+		{
+			exceptionHandler.sqlSafeClose.closeConnection(conn);
 		}
 	}
 	
