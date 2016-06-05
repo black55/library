@@ -27,7 +27,7 @@ public class login extends HttpServlet {
 		try
 		{
 			String username = req.getParameter("username");
-			String password = req.getParameter("password");
+			String password = req.getParameter("password") + username; // password + salting word
 			conn = dataLayer.getConnection.get();
 			stmt = conn.prepareStatement("select username from user where username = ? and password = md5(?)");
 			stmt.setString(1,username);
