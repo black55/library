@@ -35,7 +35,10 @@ public class login extends HttpServlet {
 			resultSet = stmt.executeQuery();
 			if(resultSet.next())
 			{
-				System.out.println("Success");
+				HttpSession session = req.getSession();
+				session.setAttribute("username", username);
+				RequestDispatcher reqDisp = req.getRequestDispatcher("/jsp/userPage.jsp");
+				reqDisp.forward(req, res);
 			}
 			else
 			{
