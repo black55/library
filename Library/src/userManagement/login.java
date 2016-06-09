@@ -36,6 +36,7 @@ public class login extends HttpServlet {
 			if(resultSet.next())
 			{
 				HttpSession session = req.getSession();
+				session.setMaxInactiveInterval(900000);
 				session.setAttribute("username", username);
 				RequestDispatcher reqDisp = req.getRequestDispatcher("/jsp/userPage.jsp");
 				reqDisp.forward(req, res);
