@@ -14,6 +14,16 @@
   	<url-pattern>/loginCheck</url-pattern>
   </servlet-mapping>
   
+  
+  <servlet>
+  	<servlet-name>signup</servlet-name>
+  	<servlet-class>userManagement.signup</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name> signup</servlet-name>
+  	<url-pattern>/signup</url-pattern>
+  </servlet-mapping>
+  
   <resource-ref>
   	<description>DB login connection</description>
   	<res-ref-name>mysql/library</res-ref-name>
